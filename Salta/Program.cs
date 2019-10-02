@@ -11,9 +11,11 @@ namespace Salta
         {
             ServicePersona s = new ServicePersona();
 
-            Persona p = new Persona();
+            Persona p = s.GetPersonaById("5d94b7953d0c303b88d41a71");
 
-            s.AltaPersona("Luciano","Pagano","34803204");
+            Console.WriteLine(p.Sexo.Descripcion);
+            Console.WriteLine(p.Obra.Descripcion);
+            Console.WriteLine(p.Factor.Descripcion);
 
             Console.ReadKey();
 

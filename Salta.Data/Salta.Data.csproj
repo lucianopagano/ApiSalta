@@ -76,6 +76,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\FactorSanguineo.cs" />
+    <Compile Include="Core\ObraSocial.cs" />
     <Compile Include="Core\Persona.cs" />
     <Compile Include="Core\Sexo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

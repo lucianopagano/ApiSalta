@@ -21,6 +21,20 @@ namespace Salta.Api.Controllers.Dto
 
         public string Dni { get; set; }
 
+        //1 Masc
+        //2 Fem
+        public int Sexo { get; set; }
+
+        //Swiss Medical 0
+        //Pami 1
+        //IOMA 2 
+        public int ObraSocial { get; set; }
+
+        //1 a+
+        //2 0+
+        //3 a-
+        public int FactorSanguineo { get; set; }
+
         public static Persona GetModelPersona(PacienteDto pDto)
         {
             Persona p = new Persona();

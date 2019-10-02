@@ -27,7 +27,7 @@ namespace Salta.Api.Controllers
 
             ServicePersona s = new ServicePersona();
 
-            s.AltaPersona(p);
+            s.AltaPersona(p, paciente.Sexo,paciente.ObraSocial,paciente.FactorSanguineo);
 
             return Ok();
         }
