@@ -1,0 +1,23 @@
+﻿{
+	"Nombre": "Alva",
+	"Apellido": "Pagano",
+	"Dni":"34803204",
+	"NumeroHistClincia": "321",
+    "Edad": 23 
+}
+
+{
+	"Nombre": "Lucho",
+	"Apellido": "Pagano",
+	"Dni":"34803204",
+	"NumeroHistClincia": "123",
+    "Edad": 29 
+}
+
+{
+	"Nombre": "Falo",
+	"Apellido": "Man",
+	"Dni":"34803204",
+	"NumeroHistClincia": "123456",
+    "Edad": 16 
+}
