@@ -15,9 +15,10 @@ namespace Salta.Api.Controllers
     {
 
         [HttpGet]
-        public IHttpActionResult Ping(PacienteDto paciente)
+        public IHttpActionResult Listado()
         {
-            return Ok<int>(1);
+            ServicePersona s = new ServicePersona();
+            return Ok(s.GetAll());
         }
 
         [HttpPost]
@@ -31,6 +32,7 @@ namespace Salta.Api.Controllers
 
             return Ok();
         }
+
 
     }
 }

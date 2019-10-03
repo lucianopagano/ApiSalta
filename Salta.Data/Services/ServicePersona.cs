@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using Salta.Data.Core;
 using MongoDB.Bson;
+using System.Collections.Generic;
 
 namespace Salta.Data.Services
 {
@@ -53,6 +54,21 @@ namespace Salta.Data.Services
             Persona p = collection.Find<Persona>(filter).FirstOrDefault();
 
             return p;
+        }
+
+        public List<Persona> GetAll()
+        {
+            // Create a MongoClient object by using the connection string
+            var client = new MongoClient(connectionString);
+
+            //Use the MongoClient to access the server
+            var database = client.GetDatabase("Salta");
+
+            //get mongodb collection
+            var collection = database.GetCollection<Persona>("Persona");
+
+            return collection.AsQueryable<Persona>().ToList();
+            
         }
 
     }
