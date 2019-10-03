@@ -10,7 +10,8 @@ namespace Salta.Api.Controllers.Dto
     [JsonObject]
     public class PacienteDto
     {
-        
+        public string Id { get; set; }
+
         public string NumeroHistClincia { get; set; }
 
         public int Edad { get; set; }

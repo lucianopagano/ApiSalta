@@ -22,20 +22,47 @@ namespace Salta.Data.Services
             var collection = database.GetCollection<Persona>("Persona");
 
 
-            var filter = new BsonDocument("Codigo",sexo);
-            Sexo s = database.GetCollection<Sexo>("Sexo").Find<Sexo>(filter).FirstOrDefault();
+            //var filter = new BsonDocument("Codigo",sexo);
+            //Sexo s = database.GetCollection<Sexo>("Sexo").Find<Sexo>(filter).FirstOrDefault();
 
-            filter = new BsonDocument("Codigo", obrasocial);
-            ObraSocial obra = database.GetCollection<ObraSocial>("ObraSocial").Find<ObraSocial>(filter).FirstOrDefault();
+            //filter = new BsonDocument("Codigo", obrasocial);
+            //ObraSocial obra = database.GetCollection<ObraSocial>("ObraSocial").Find<ObraSocial>(filter).FirstOrDefault();
 
-            filter = new BsonDocument("Codigo", factorSanguineo);
-            FactorSanguineo factor = database.GetCollection<FactorSanguineo>("FactorSanguineo").Find<FactorSanguineo>(filter).FirstOrDefault();
+            //filter = new BsonDocument("Codigo", factorSanguineo);
+            //FactorSanguineo factor = database.GetCollection<FactorSanguineo>("FactorSanguineo").Find<FactorSanguineo>(filter).FirstOrDefault();
 
-            persona.Sexo = s;
-            persona.Obra = obra;
-            persona.Factor = factor;
+            persona.Sexo = this.GetSexo(sexo);
+            persona.Obra = this.GetObraSocial(obrasocial);
+            persona.Factor = this.GetFactorSanguineo(factorSanguineo);
 
             collection.InsertOne(persona);
+        }
+
+        public void ModificarPersona(string id, Persona personaAModificar, int sexo, int obrasocial, int factorSanguineo)
+        {
+            Persona per = GetPersonaById(id);
+
+            per.Nombre = personaAModificar.Nombre;
+            per.Apellido = personaAModificar.Apellido;
+            per.Dni = personaAModificar.Dni;
+            per.NumeroHistClincia = personaAModificar.NumeroHistClincia;
+            per.Edad = personaAModificar.Edad;
+
+            per.Sexo = this.GetSexo(sexo);
+            per.Obra = this.GetObraSocial(obrasocial);
+            per.Factor = this.GetFactorSanguineo(factorSanguineo);
+
+            var client = new MongoClient(connectionString);
+
+            //Use the MongoClient to access the server
+            var database = client.GetDatabase("Salta");
+
+
+            var collection = database.GetCollection<Persona>("Persona");
+
+            var filter = Builders<Persona>.Filter.Eq(s => s.Id, new ObjectId(id));
+            var result = collection.ReplaceOne(filter, per);
+
         }
 
         public Persona GetPersonaById(string id)
@@ -69,6 +96,49 @@ namespace Salta.Data.Services
 
             return collection.AsQueryable<Persona>().ToList();
             
+        }
+
+        public Sexo GetSexo(int codigo)
+        {
+            // Create a MongoClient object by using the connection string
+            var client = new MongoClient(connectionString);
+
+            //Use the MongoClient to access the server
+            var database = client.GetDatabase("Salta");
+
+            var filter = new BsonDocument("Codigo", codigo);
+            Sexo s = database.GetCollection<Sexo>("Sexo").Find<Sexo>(filter).FirstOrDefault();
+            return s;
+        }
+
+        public ObraSocial GetObraSocial(int codigo)
+        {
+            // Create a MongoClient object by using the connection string
+            var client = new MongoClient(connectionString);
+
+            //Use the MongoClient to access the server
+            var database = client.GetDatabase("Salta");
+
+            var filter = new BsonDocument("Codigo", codigo);
+
+            ObraSocial obra = database.GetCollection<ObraSocial>("ObraSocial").Find<ObraSocial>(filter).FirstOrDefault();
+
+            return obra; 
+        }
+
+        public FactorSanguineo GetFactorSanguineo(int codigo)
+        {
+            // Create a MongoClient object by using the connection string
+            var client = new MongoClient(connectionString);
+
+            //Use the MongoClient to access the server
+            var database = client.GetDatabase("Salta");
+
+            var filter = new BsonDocument("Codigo", codigo);
+
+            filter = new BsonDocument("Codigo", codigo);
+            FactorSanguineo factor = database.GetCollection<FactorSanguineo>("FactorSanguineo").Find<FactorSanguineo>(filter).FirstOrDefault();
+            return factor;
         }
 
     }
