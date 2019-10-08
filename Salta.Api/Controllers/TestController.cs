@@ -12,7 +12,7 @@ namespace Salta.Api.Controllers
         // GET: api/Test
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "test1", "test2" };
         }
 
         // GET: api/Test/5
