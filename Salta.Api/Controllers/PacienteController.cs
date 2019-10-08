@@ -22,28 +22,29 @@ namespace Salta.Api.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Post(PacienteDto paciente)
+        public IHttpActionResult Alta(PacienteDto paciente)
         {
             Persona p = PacienteDto.GetModelPersona(paciente);
 
             ServicePersona s = new ServicePersona();
 
-            s.AltaPersona(p, paciente.Sexo,paciente.ObraSocial,paciente.FactorSanguineo);
+            s.AltaPersona(p, paciente.Genero,Convert.ToInt32(paciente.ObraSocial),
+                Convert.ToInt32(paciente.FactorSanguineo),Convert.ToInt32 (paciente.GrupoSanguineo));
 
             return Ok();
         }
 
-        [HttpPut]
-        public IHttpActionResult Put(PacienteDto paciente)
-        {
-            Persona p = PacienteDto.GetModelPersona(paciente);
+        //[HttpPut]
+        //public IHttpActionResult Put(PacienteDto paciente)
+        //{
+        //    Persona p = PacienteDto.GetModelPersona(paciente);
 
-            ServicePersona s = new ServicePersona();
+        //    ServicePersona s = new ServicePersona();
 
-            s.ModificarPersona(paciente.Id, p, paciente.Sexo, paciente.ObraSocial, paciente.FactorSanguineo);
+        //    s.ModificarPersona(paciente.Id, p, paciente.Genero, paciente.ObraSocial, paciente.FactorSanguineo, paciente.GrupoSanguineo);
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
 
     }
 }

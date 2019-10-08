@@ -7,7 +7,8 @@
         "Edad": 23,
         "Sexo": 2,
         "ObraSocial" : 0,
-        "FactorSanguineo" : 0
+        "FactorSanguineo": 0,
+        "GrupoSanguineo": 0
     },
 
     {
@@ -18,7 +19,8 @@
         "Edad": 29,
         "Sexo": 1,
         "ObraSocial": 1,
-        "FactorSanguineo": 1
+        "FactorSanguineo": 1,
+        "GrupoSanguineo": 1
 
     },
 
@@ -30,8 +32,8 @@
         "Edad": 16,
         "Sexo": 2,
         "ObraSocial": 1,
-        "FactorSanguineo": 2
-        
+        "FactorSanguineo": 2,
+        "GrupoSanguineo": 2   
     }
 ]
 
@@ -40,6 +42,17 @@ db.Sexo.insert({ "Codigo": 1, "Descripcion": "Femenino" });
 db.ObraSocial.insert({ "Codigo": 0,"Descripcion": "Swiss Medical"});
 db.ObraSocial.insert({ "Codigo": 1,"Descripcion": "Pami"});
 db.ObraSocial.insert({ "Codigo": 2,"Descripcion": "IOMA"});
-db.FactorSanguineo.insert({ "Codigo": 0, "Descripcion": "A+"});
-db.FactorSanguineo.insert({ "Codigo": 1, "Descripcion": "0+"});
-db.FactorSanguineo.insert({ "Codigo": 2, "Descripcion": "A-"});
+
+db.Factor.insert({ "Codigo": 0, "Descripcion": "R+" });
+db.Factor.insert({ "Codigo": 1, "Descripcion": "R-" });
+
+db.GrupoSanguineo.insert({ "Codigo": 0, "Descripcion": "A" });
+db.GrupoSanguineo.insert({ "Codigo": 1, "Descripcion": "AB" });
+db.GrupoSanguineo.insert({ "Codigo": 2, "Descripcion": "B" });
+db.GrupoSanguineo.insert({ "Codigo": 3, "Descripcion": "0" });
+
+
+
+//db.FactorSanguineo.insert({ "Codigo": 0, "Descripcion": "A+" });
+//db.FactorSanguineo.insert({ "Codigo": 1, "Descripcion": "0+" });
+//db.FactorSanguineo.insert({ "Codigo": 2, "Descripcion": "A-" });

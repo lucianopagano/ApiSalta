@@ -20,7 +20,9 @@ namespace Salta.Data.Core
 
         public ObraSocial Obra { get; set; }
 
-        public FactorSanguineo Factor { get; set; }
+        public Factor Factor { get; set; }
+
+        public GrupoSanguineo Grupo { get; set; }
     }
 
 

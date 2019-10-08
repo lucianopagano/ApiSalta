@@ -9,7 +9,7 @@ namespace Salta.Data.Services
     public class ServicePersona
     {
         const string connectionString = "mongodb://localhost:27017";
-        public void AltaPersona(Persona persona, int sexo, int obrasocial, int factorSanguineo)
+        public void AltaPersona(Persona persona, int sexo, int obrasocial, int factorSanguineo, int grupo)
         {
             
             // Create a MongoClient object by using the connection string
@@ -20,7 +20,6 @@ namespace Salta.Data.Services
 
             //get mongodb collection
             var collection = database.GetCollection<Persona>("Persona");
-
 
             //var filter = new BsonDocument("Codigo",sexo);
             //Sexo s = database.GetCollection<Sexo>("Sexo").Find<Sexo>(filter).FirstOrDefault();
@@ -34,11 +33,12 @@ namespace Salta.Data.Services
             persona.Sexo = this.GetSexo(sexo);
             persona.Obra = this.GetObraSocial(obrasocial);
             persona.Factor = this.GetFactorSanguineo(factorSanguineo);
+            persona.Grupo = this.GetGrupoSanguineo(grupo);
 
             collection.InsertOne(persona);
         }
 
-        public void ModificarPersona(string id, Persona personaAModificar, int sexo, int obrasocial, int factorSanguineo)
+        public void ModificarPersona(string id, Persona personaAModificar, int sexo, int obrasocial, int factorSanguineo, int grupo)
         {
             Persona per = GetPersonaById(id);
 
@@ -51,6 +51,8 @@ namespace Salta.Data.Services
             per.Sexo = this.GetSexo(sexo);
             per.Obra = this.GetObraSocial(obrasocial);
             per.Factor = this.GetFactorSanguineo(factorSanguineo);
+
+            per.Grupo = this.GetGrupoSanguineo(grupo);
 
             var client = new MongoClient(connectionString);
 
@@ -83,7 +85,7 @@ namespace Salta.Data.Services
             return p;
         }
 
-        public List<Persona> GetAll()
+        public List<object> GetAll()
         {
             // Create a MongoClient object by using the connection string
             var client = new MongoClient(connectionString);
@@ -94,8 +96,22 @@ namespace Salta.Data.Services
             //get mongodb collection
             var collection = database.GetCollection<Persona>("Persona");
 
-            return collection.AsQueryable<Persona>().ToList();
-            
+            List<object> lista = collection.AsQueryable<Persona>().ToList().Select(p =>
+            new {
+                Id = p.Id.ToString(),
+                NumeroOrden = p.NumeroHistClincia,
+                Apellido = p.Apellido,
+                Nombre= p.Nombre,
+                DocumentoDeIdentidad = p.Dni,
+                Edad = p.Edad,
+                FactorSanguineo = p.Factor.Descripcion,
+                GrupoSanguineo = p.Grupo,
+                ObraSocial = p.Obra.Descripcion,
+                Genero= p.Sexo.Descripcion
+            }).ToList<object>();
+
+
+            return lista;
         }
 
         public Sexo GetSexo(int codigo)
@@ -126,7 +142,7 @@ namespace Salta.Data.Services
             return obra; 
         }
 
-        public FactorSanguineo GetFactorSanguineo(int codigo)
+        public Factor GetFactorSanguineo(int codigo)
         {
             // Create a MongoClient object by using the connection string
             var client = new MongoClient(connectionString);
@@ -137,8 +153,23 @@ namespace Salta.Data.Services
             var filter = new BsonDocument("Codigo", codigo);
 
             filter = new BsonDocument("Codigo", codigo);
-            FactorSanguineo factor = database.GetCollection<FactorSanguineo>("FactorSanguineo").Find<FactorSanguineo>(filter).FirstOrDefault();
+            Factor factor = database.GetCollection<Factor>("Factor").Find<Factor>(filter).FirstOrDefault();
             return factor;
+        }
+
+        public GrupoSanguineo GetGrupoSanguineo(int codigo)
+        {
+            // Create a MongoClient object by using the connection string
+            var client = new MongoClient(connectionString);
+
+            //Use the MongoClient to access the server
+            var database = client.GetDatabase("Salta");
+
+            var filter = new BsonDocument("Codigo", codigo);
+
+            filter = new BsonDocument("Codigo", codigo);
+            GrupoSanguineo grupo = database.GetCollection<GrupoSanguineo>("GrupoSanguineo").Find<GrupoSanguineo>(filter).FirstOrDefault();
+            return grupo;
         }
 
     }
