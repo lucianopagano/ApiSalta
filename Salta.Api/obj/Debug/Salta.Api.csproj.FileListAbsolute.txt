@@ -86,8 +86,8 @@ C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\Salta.Data.dll
 C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\System.Net.Http.Formatting.dll
 C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\System.Web.Http.dll
 C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\System.Web.Http.WebHost.dll
-C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\MongoDB.Bson.dll
 C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\MongoDB.Driver.dll
+C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\MongoDB.Bson.dll
 C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\MongoDB.Driver.Core.dll
 C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\DnsClient.dll
 C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\System.Runtime.InteropServices.RuntimeInformation.dll
@@ -106,8 +106,8 @@ C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\Newtonsoft.Json.xml
 C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\System.Net.Http.Formatting.xml
 C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\System.Web.Http.xml
 C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\System.Web.Http.WebHost.xml
-C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\MongoDB.Bson.xml
 C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\MongoDB.Driver.xml
+C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\MongoDB.Bson.xml
 C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\MongoDB.Driver.Core.xml
 C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\DnsClient.xml
 C:\Users\lpagano\Desktop\Salta\ApiSalta\Salta.Api\bin\Snappy.NET.xml
