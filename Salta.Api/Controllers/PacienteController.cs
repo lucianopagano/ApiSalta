@@ -17,21 +17,41 @@ namespace Salta.Api.Controllers
         [HttpGet]
         public IHttpActionResult Listado()
         {
-            ServicePersona s = new ServicePersona();
-            return Ok(s.GetAll());
+            try
+            {
+                ServicePersona s = new ServicePersona();
+                return Ok(s.GetAll());
+            }
+            catch (Exception ex)
+            {
+                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    Content = new StringContent(ex.Message)
+                });
+            }
+
         }
 
         [HttpPost]
         public IHttpActionResult Alta(PacienteDto paciente)
         {
-            Persona p = PacienteDto.GetModelPersona(paciente);
+            try
+            {
+                Persona p = PacienteDto.GetModelPersona(paciente);
 
-            ServicePersona s = new ServicePersona();
+                ServicePersona s = new ServicePersona();
 
-            s.AltaPersona(p, paciente.Genero,Convert.ToInt32(paciente.ObraSocial),
+                s.AltaPersona(p, paciente.Genero,Convert.ToInt32(paciente.ObraSocial),
                 Convert.ToInt32(paciente.FactorSanguineo),Convert.ToInt32 (paciente.GrupoSanguineo));
 
-            return Ok();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.InternalServerError) {
+                    Content = new StringContent(ex.Message)
+                });
+            }
         }
 
         //[HttpPut]
