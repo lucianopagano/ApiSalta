@@ -15,25 +15,20 @@ namespace Salta.Data.Services
         const string connectionString = "mongodb+srv://lucianopagano:lucho123@cluster0-adezy.azure.mongodb.net/Salta?retryWrites=true&w=majority";
             
         MongoClient client;
+        IMongoDatabase database;
 
         public ServicePersona()
         {
             //ConfigurationManager.ConnectionStrings["MongoDB"].ToString();
 
-            this.client = new MongoClient("mongodb+srv://lucianopagano:lucho123@cluster0-adezy.azure.mongodb.net/test?retryWrites=true&w=majority");
-            //var database = client.GetDatabase("test");
+            this.client = new MongoClient("mongodb+srv://lucianopagano:lucho123@cluster0-adezy.azure.mongodb.net?retryWrites=true&w=majority");
 
-            //this.client= new MongoClient(connectionString);
+            this.database = client.GetDatabase("Salta");
         }
 
         public void AltaPersona(Persona persona, int sexo, int obrasocial, int factorSanguineo, int grupo)
         {
-            
-            // Create a MongoClient object by using the connection string
-            //MongoClient client = new MongoClient(connectionString);
-
-            //Use the MongoClient to access the server
-            var database = client.GetDatabase("Salta");
+                        
 
             //get mongodb collection
             var collection = database.GetCollection<Persona>("Persona");
@@ -61,10 +56,6 @@ namespace Salta.Data.Services
             per.Factor = this.GetFactorSanguineo(factorSanguineo);
 
 
-            //Use the MongoClient to access the server
-            var database = client.GetDatabase("Salta");
-
-
             var collection = database.GetCollection<Persona>("Persona");
 
             var filter = Builders<Persona>.Filter.Eq(s => s.Id, new ObjectId(id));
@@ -74,11 +65,7 @@ namespace Salta.Data.Services
 
         public Persona GetPersonaById(string id)
         {
-            // Create a MongoClient object by using the connection string
-            //var client = new MongoClient(connectionString);
 
-            //Use the MongoClient to access the server
-            var database = client.GetDatabase("Salta");
 
             //get mongodb collection
             var collection = database.GetCollection<Persona>("Persona");
@@ -95,8 +82,6 @@ namespace Salta.Data.Services
             // Create a MongoClient object by using the connection string
             //var client = new MongoClient(connectionString);
 
-            //Use the MongoClient to access the server
-            var database = client.GetDatabase("Salta");
 
             //get mongodb collection
             var collection = database.GetCollection<Persona>("Persona");
@@ -121,11 +106,7 @@ namespace Salta.Data.Services
 
         public Sexo GetSexo(int codigo)
         {
-            // Create a MongoClient object by using the connection string
-            //var client = new MongoClient(connectionString);
 
-            //Use the MongoClient to access the server
-            var database = client.GetDatabase("Salta");
 
             var filter = new BsonDocument("Codigo", codigo);
             Sexo s = database.GetCollection<Sexo>("Sexo").Find<Sexo>(filter).FirstOrDefault();
@@ -136,9 +117,6 @@ namespace Salta.Data.Services
         {
             // Create a MongoClient object by using the connection string
             //var client = new MongoClient(connectionString);
-
-            //Use the MongoClient to access the server
-            var database = client.GetDatabase("Salta");
 
             var filter = new BsonDocument("Codigo", codigo);
 
@@ -152,9 +130,6 @@ namespace Salta.Data.Services
             // Create a MongoClient object by using the connection string
             //var client = new MongoClient(connectionString);
 
-            //Use the MongoClient to access the server
-            var database = client.GetDatabase("Salta");
-
             var filter = new BsonDocument("Codigo", codigo);
 
             filter = new BsonDocument("Codigo", codigo);
@@ -166,9 +141,6 @@ namespace Salta.Data.Services
         {
             // Create a MongoClient object by using the connection string
             var client = new MongoClient(connectionString);
-
-            //Use the MongoClient to access the server
-            var database = client.GetDatabase("Salta");
 
             var filter = new BsonDocument("Codigo", codigo);
 
