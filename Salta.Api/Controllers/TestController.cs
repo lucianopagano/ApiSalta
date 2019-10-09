@@ -22,8 +22,9 @@ namespace Salta.Api.Controllers
         }
 
         // POST: api/Test
-        public void Post([FromBody]string value)
+        public void Post([FromBody] byte[] value)
         {
+            
         }
 
         // PUT: api/Test/5

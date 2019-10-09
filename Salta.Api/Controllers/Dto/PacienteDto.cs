@@ -35,6 +35,9 @@ namespace Salta.Api.Controllers.Dto
 
         public string GrupoSanguineo { get; set; }
 
+        public string Observaciones { get; set; }
+        public string ImagenPerfil { get; set; }
+
         public static Persona GetModelPersona(PacienteDto pDto)
         {
             Persona p = new Persona();
@@ -44,6 +47,11 @@ namespace Salta.Api.Controllers.Dto
             p.Dni = pDto.DocumentoDeIdentidad;
             p.NumeroHistClincia = pDto.NumeroOrden;
             p.Edad = pDto.Edad;
+            p.Observaciones = pDto.Observaciones;
+
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(pDto.ImagenPerfil);
+
+            p.ImagenPerfil = Convert.ToBase64String(plainTextBytes);
 
             return p;
         } 

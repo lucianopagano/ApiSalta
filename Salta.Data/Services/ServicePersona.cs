@@ -4,14 +4,17 @@ using Salta.Data.Core;
 using MongoDB.Bson;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
+using System;
 
 namespace Salta.Data.Services
 {
     public class ServicePersona
     {
-        
-        const string connectionString = "mongodb+srv://lucianopagano:lucho123@cluster0-adezy.azure.mongodb.net/Salta?retryWrites=true&w=majority";
-            
+
+        //const string connectionString = "mongodb+srv://lucianopagano:lucho123@cluster0-adezy.azure.mongodb.net/Salta?retryWrites=true&w=majority";
+        const string connectionString = "mongodb://localhost:27017";
+
         MongoClient client;
         IMongoDatabase database;
 
@@ -35,8 +38,9 @@ namespace Salta.Data.Services
             persona.Obra = this.GetObraSocial(obrasocial);
             persona.Factor = this.GetFactorSanguineo(factorSanguineo);
             persona.Grupo = this.GetGrupoSanguineo(grupo);
-
+            
             collection.InsertOne(persona);
+            
         }
 
         public void ModificarPersona(string id, Persona personaAModificar, int sexo, int obrasocial, int factorSanguineo, int grupo)
@@ -93,12 +97,14 @@ namespace Salta.Data.Services
                 DocumentoDeIdentidad = p.Dni,
                 Edad = p.Edad,
                 FactorSanguineo = p.Factor.Descripcion,
-                GrupoSanguineo = p.Grupo,
+                GrupoSanguineo = p.Grupo.Descripcion,
                 ObraSocial = p.Obra.Descripcion,
-                Genero= p.Sexo.Descripcion
-            }).ToList<object>();
+                Genero= p.Sexo.Descripcion,
+                ImagenPerfil = string.Empty //System.Text.Decoder.UTF8.GetBytes(pDto.ImagenPerfil);
 
+        }).ToList<object>();
 
+            
             return lista;
         }
 

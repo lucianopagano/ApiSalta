@@ -1,39 +1,27 @@
 ﻿[
+
     {
-        "Nombre": "Alva",
-        "Apellido": "Pagano",
-        "Dni": "34803204",
-        "NumeroHistClincia": "321",
+        "Nombre": "German",
+        "Apellido": "Ruiz",
+        "DocumentoDeIdentidad": "34803204",
+        "NumeroOrden": "321",
         "Edad": 23,
-        "Sexo": 2,
+        "Genero": 2,
         "ObraSocial" : 0,
-        "FactorSanguineo": 0,
-        "GrupoSanguineo": 0
-    },
+        "FactorSanguineo" : 0,
+        "GrupoSanguineo" : 0
+    }
 
     {
         "Nombre": "Lucho",
-        "Apellido": "Pagano",
-        "Dni": "34803204",
-        "NumeroHistClincia": "123",
-        "Edad": 29,
-        "Sexo": 1,
-        "ObraSocial": 1,
-        "FactorSanguineo": 1,
+        "Apellido": "Ruiz",
+        "DocumentoDeIdentidad": "34803204",
+        "NumeroOrden": "321",
+        "Edad": 18,
+        "Genero": 1,
+        "ObraSocial": 2,
+        "FactorSanguineo": 0,
         "GrupoSanguineo": 1
-
-    },
-
-    {
-        "Nombre": "Falo",
-        "Apellido": "Man",
-        "Dni": "34803204",
-        "NumeroHistClincia": "123456",
-        "Edad": 16,
-        "Sexo": 2,
-        "ObraSocial": 1,
-        "FactorSanguineo": 2,
-        "GrupoSanguineo": 2   
     }
 ]
 

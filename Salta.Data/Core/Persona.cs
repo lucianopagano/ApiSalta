@@ -16,6 +16,10 @@ namespace Salta.Data.Core
         public string NumeroHistClincia { get; set; }
         public int Edad { get; set; }
 
+        public string Observaciones { get; set; }
+
+        public string ImagenPerfil { get; set; }
+
         public Sexo Sexo { get; set; }
 
         public ObraSocial Obra { get; set; }
