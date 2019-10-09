@@ -9,20 +9,18 @@ namespace Salta.Data.Services
 {
     public class ServicePersona
     {
-
         
-
-        const string connectionString = "mongodb+srv://lucianopagano:lucho123@cluster0-adezy.azure.mongodb.net/Salta?retryWrites=true&w=majority";
+        //const string connectionString = "mongodb+srv://lucianopagano:lucho123@cluster0-adezy.azure.mongodb.net/Salta?retryWrites=true&w=majority";
             
         MongoClient client;
         IMongoDatabase database;
 
         public ServicePersona()
         {
-            //ConfigurationManager.ConnectionStrings["MongoDB"].ToString();
+            string connectionString = ConfigurationManager.ConnectionStrings["MongoDB"].ToString();
 
-            this.client = new MongoClient("mongodb+srv://lucianopagano:lucho123@cluster0-adezy.azure.mongodb.net?retryWrites=true&w=majority");
-
+            this.client = new MongoClient(connectionString);
+            
             this.database = client.GetDatabase("Salta");
         }
 
@@ -106,8 +104,6 @@ namespace Salta.Data.Services
 
         public Sexo GetSexo(int codigo)
         {
-
-
             var filter = new BsonDocument("Codigo", codigo);
             Sexo s = database.GetCollection<Sexo>("Sexo").Find<Sexo>(filter).FirstOrDefault();
             return s;
@@ -140,7 +136,6 @@ namespace Salta.Data.Services
         public GrupoSanguineo GetGrupoSanguineo(int codigo)
         {
             // Create a MongoClient object by using the connection string
-            var client = new MongoClient(connectionString);
 
             var filter = new BsonDocument("Codigo", codigo);
 
