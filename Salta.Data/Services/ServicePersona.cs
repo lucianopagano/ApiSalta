@@ -10,14 +10,14 @@ namespace Salta.Data.Services
     public class ServicePersona
     {
         
-        //const string connectionString = "mongodb+srv://lucianopagano:lucho123@cluster0-adezy.azure.mongodb.net/Salta?retryWrites=true&w=majority";
+        const string connectionString = "mongodb+srv://lucianopagano:lucho123@cluster0-adezy.azure.mongodb.net/Salta?retryWrites=true&w=majority";
             
         MongoClient client;
         IMongoDatabase database;
 
         public ServicePersona()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["MongoDB"].ToString();
+            //string connectionString = ConfigurationManager.ConnectionStrings["MongoDB"].ToString();
 
             this.client = new MongoClient(connectionString);
             
