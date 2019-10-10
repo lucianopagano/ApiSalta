@@ -234,3 +234,6 @@ C:\Users\lpagano\Desktop\ApiSalta\ApiSalta\Salta.Api\bin\Crc32C.NET.xml
 C:\Users\lpagano\Desktop\ApiSalta\ApiSalta\Salta.Api\obj\Debug\Salta.Api.csprojResolveAssemblyReference.cache
 C:\Users\lpagano\Desktop\ApiSalta\ApiSalta\Salta.Api\obj\Debug\Salta.Api.dll
 C:\Users\lpagano\Desktop\ApiSalta\ApiSalta\Salta.Api\obj\Debug\Salta.Api.pdb
+C:\Users\lpagano\Desktop\ApiSalta\ApiSalta\Salta.Api\bin\System.Web.Cors.dll
+C:\Users\lpagano\Desktop\ApiSalta\ApiSalta\Salta.Api\bin\System.Web.Http.Cors.dll
+C:\Users\lpagano\Desktop\ApiSalta\ApiSalta\Salta.Api\bin\System.Web.Http.Cors.xml

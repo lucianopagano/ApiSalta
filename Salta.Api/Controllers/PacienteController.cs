@@ -7,13 +7,16 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Salta.Api.Controllers
 {
 
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class PacienteController : ApiController
     {
-
+        
         [HttpGet]
         public IHttpActionResult Listado()
         {
